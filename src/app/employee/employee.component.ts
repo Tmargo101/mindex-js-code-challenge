@@ -30,7 +30,6 @@ export class EmployeeComponent implements OnInit {
   private getDirectReportInformation(employee: Employee): void {
     if (!employee.directReports) { return; }
 
-    // 
     employee.directReports.forEach(e => {
       this.employeeService.get(e)
         .subscribe(report => {
@@ -55,5 +54,6 @@ export class EmployeeComponent implements OnInit {
           this.getReports(report);
         });
     });
+    
   }
 }

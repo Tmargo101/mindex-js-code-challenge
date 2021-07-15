@@ -1,11 +1,13 @@
-.direct-reports-list {
-  padding-top: 0px;
+.employee {
+  margin: 20px;
+  margin-bottom: 40px;
 }
 
-.direct-reports-list-header {
-  background-color: lightgray;
+mat-card-title {
+  color: steelblue;
+  padding: 10px;
 }
 
-.direct-reports-list-item {
-  background-color: rgb(245, 245, 245);
+mat-card-subtitle {
+  padding: 5px;
 }

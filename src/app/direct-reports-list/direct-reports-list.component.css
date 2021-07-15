@@ -1,0 +1,11 @@
+.direct-reports-list {
+  padding-top: 0px;
+}
+
+.direct-reports-list-header {
+  background-color: lightgray;
+}
+
+.direct-reports-list-item {
+  background-color: rgb(245, 245, 245);
+}

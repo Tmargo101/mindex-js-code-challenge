@@ -2,33 +2,19 @@
   <mat-card-header>
     <mat-card-title>{{employee.firstName}} {{employee.lastName}}, {{employee.position}}</mat-card-title>
     <mat-card-subtitle>
-      <hr>
-      Employee ID: {{employee.id}}
-      <span *ngIf='employee.directReports'>
-        Reports: {{totalReports}}
-      </span>
+      <span *ngIf='employee.id'>Employee ID: {{employee.id}}</span>
+      <span *ngIf='employee.directReports'>, Total Reports: {{totalReports}}</span>
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <dl>
+    <!-- <dl>
       <dt>Job Title</dt>
       <dd>{{employee.position}}</dd>
     </dl>
     <dl *ngIf='employee.directReports'>
       <dt>Reports</dt>
       <dd>{{totalReports}}</dd>
-    </dl>
-    <mat-list *ngIf='employee.directReports' class='direct-reports-list'>
-      <mat-list-item class='direct-reports-list-header'>Direct Reports</mat-list-item>
-      <mat-list-item class='direct-reports-list-item' *ngFor='let report of directReports'>
-        <span matLine>{{report.firstName}} {{report.lastName}}</span>
-        <button mat-icon-button>
-          <mat-icon>edit</mat-icon>
-       </button>
-       <button mat-icon-button>
-        <mat-icon>delete</mat-icon>
-     </button>
-      </mat-list-item>
-    </mat-list>
+    </dl> -->
+    <app-direct-reports-list *ngIf='employee.directReports' [directReports]='directReports'></app-direct-reports-list>
   </mat-card-content>
 </mat-card>

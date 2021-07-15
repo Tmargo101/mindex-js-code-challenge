@@ -1,0 +1,12 @@
+<mat-list class='direct-reports-list'>
+  <mat-list-item class='direct-reports-list-header'>Direct Reports: {{directReports.length}}</mat-list-item>
+  <mat-list-item class='direct-reports-list-item' *ngFor='let report of directReports'>
+    <span matLine>{{report.firstName}} {{report.lastName}}, {{report.position}}</span>
+    <button mat-icon-button>
+      <mat-icon>edit</mat-icon>
+   </button>
+   <button mat-icon-button>
+    <mat-icon>delete</mat-icon>
+ </button>
+  </mat-list-item>
+</mat-list>

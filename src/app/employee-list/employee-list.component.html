@@ -1,5 +1,3 @@
-<mat-grid-list class="employee-list" cols="2">
-  <mat-grid-tile *ngFor="let emp of employees">
-    <app-employee [employee]="emp"></app-employee>
-  </mat-grid-tile>
-</mat-grid-list>
+<ng-container *ngFor='let emp of employees'>
+  <app-employee [employee]='emp'></app-employee>
+</ng-container>

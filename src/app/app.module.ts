@@ -16,12 +16,14 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
+import { DirectReportsListComponent } from './direct-reports-list/direct-reports-list.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
-    EmployeeListComponent
+    EmployeeListComponent,
+    DirectReportsListComponent
   ],
   imports: [
     BrowserModule,
