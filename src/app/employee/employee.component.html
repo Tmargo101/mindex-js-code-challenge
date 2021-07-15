@@ -1,4 +1,4 @@
-<mat-card class="employee">
+<mat-card class="employee mat-elevation-z6">
   <mat-card-header>
     <mat-card-title>{{employee.firstName}} {{employee.lastName}}, {{employee.position}}</mat-card-title>
     <mat-card-subtitle>
@@ -18,5 +18,17 @@
       <dt>Reports</dt>
       <dd>{{totalReports}}</dd>
     </dl>
+    <mat-list *ngIf='employee.directReports' class='direct-reports-list'>
+      <mat-list-item>Direct Reports</mat-list-item>
+      <mat-list-item *ngFor='let report of directReports'>
+        <span>{{report.firstName}} {{report.lastName}}</span>
+        <button mat-icon-button>
+          <mat-icon>edit</mat-icon>
+       </button>
+       <button mat-icon-button>
+        <mat-icon>delete</mat-icon>
+     </button>
+      </mat-list-item>
+    </mat-list>
   </mat-card-content>
 </mat-card>
