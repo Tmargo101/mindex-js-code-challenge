@@ -1,12 +1,22 @@
 <mat-card class="employee">
   <mat-card-header>
-    <mat-card-title>{{employee.lastName}}, {{employee.firstName}}</mat-card-title>
-    <mat-card-subtitle>{{employee.id}}</mat-card-subtitle>
+    <mat-card-title>{{employee.firstName}} {{employee.lastName}}, {{employee.position}}</mat-card-title>
+    <mat-card-subtitle>
+      <hr>
+      Employee ID: {{employee.id}}
+      <span *ngIf='employee.directReports'>
+        Reports: {{totalReports}}
+      </span>
+    </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
     <dl>
       <dt>Job Title</dt>
       <dd>{{employee.position}}</dd>
+    </dl>
+    <dl *ngIf='employee.directReports'>
+      <dt>Reports</dt>
+      <dd>{{totalReports}}</dd>
     </dl>
   </mat-card-content>
 </mat-card>
