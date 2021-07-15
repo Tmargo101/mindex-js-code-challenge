@@ -19,9 +19,9 @@
       <dd>{{totalReports}}</dd>
     </dl>
     <mat-list *ngIf='employee.directReports' class='direct-reports-list'>
-      <mat-list-item>Direct Reports</mat-list-item>
-      <mat-list-item *ngFor='let report of directReports'>
-        <span>{{report.firstName}} {{report.lastName}}</span>
+      <mat-list-item class='direct-reports-list-header'>Direct Reports</mat-list-item>
+      <mat-list-item class='direct-reports-list-item' *ngFor='let report of directReports'>
+        <span matLine>{{report.firstName}} {{report.lastName}}</span>
         <button mat-icon-button>
           <mat-icon>edit</mat-icon>
        </button>
