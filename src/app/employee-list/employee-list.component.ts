@@ -12,6 +12,7 @@ import {EmployeeService} from '../employee.service';
 export class EmployeeListComponent implements OnInit {
   employees: Employee[] = [];
   errorMessage: string;
+  reportToModify: Employee;
 
   constructor(private employeeService: EmployeeService) {
   }
@@ -23,6 +24,16 @@ export class EmployeeListComponent implements OnInit {
         map(emps => this.employees = emps),
         catchError(this.handleError.bind(this))
       ).subscribe();
+  }
+
+  editReport(emp: Employee): void {
+    console.log(`Edit employee ${emp.id}`)
+    this.reportToModify = emp;
+  }
+
+  deleteReport(emp: Employee): void {
+    console.log(`Delete employee ${emp.id}`)
+    this.reportToModify = emp;
   }
 
   private handleError(e: Error | any): string {

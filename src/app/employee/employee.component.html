@@ -7,14 +7,11 @@
     </mat-card-subtitle>
   </mat-card-header>
   <mat-card-content>
-    <!-- <dl>
-      <dt>Job Title</dt>
-      <dd>{{employee.position}}</dd>
-    </dl>
-    <dl *ngIf='employee.directReports'>
-      <dt>Reports</dt>
-      <dd>{{totalReports}}</dd>
-    </dl> -->
-    <app-direct-reports-list *ngIf='employee.directReports' [directReports]='directReports'></app-direct-reports-list>
+    <app-direct-reports-list
+      *ngIf='employee.directReports'
+      [(directReports)]='directReports'
+      (editReport)='emitEditReport($event)'
+      (deleteReport)='emitDeleteReport($event)'
+    ></app-direct-reports-list>
   </mat-card-content>
 </mat-card>
