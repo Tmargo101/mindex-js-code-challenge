@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ModifyDialogComponent } from './modify-dialog.component';
 
@@ -8,7 +9,10 @@ describe('ModifyDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ModifyDialogComponent ]
+      declarations: [ ModifyDialogComponent ],
+      providers: [
+        { provide: MAT_DIALOG_DATA, useValue: {} },
+      ]
     })
     .compileComponents();
   }));
@@ -16,10 +20,18 @@ describe('ModifyDialogComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ModifyDialogComponent);
     component = fixture.componentInstance;
+    component.employee = {
+      id: 1,
+      firstName: 'first',
+      lastName: 'last',
+      position: 'jobTitle',
+      compensation: 0
+    };
+
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create the component', () => {
     expect(component).toBeTruthy();
   });
 });

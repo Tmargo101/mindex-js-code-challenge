@@ -16,6 +16,7 @@ describe('DirectReportsListComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(DirectReportsListComponent);
     component = fixture.componentInstance;
+    component.directReports = [];
     fixture.detectChanges();
   });
 
