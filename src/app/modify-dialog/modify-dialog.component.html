@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>Edit Direct Report</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <mat-label>First Name</mat-label>
+    <input matInput disabled value='{{employee.firstName}}'>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <mat-label>Last Name</mat-label>
+    <input matInput disabled value='{{employee.lastName}}'>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <mat-label>Title</mat-label>
+    <input matInput disabled value='{{employee.position}}'>
+  </mat-form-field>
+
+  <br>
+
+  <mat-form-field>
+    <mat-label>Compensation</mat-label>
+    <input matInput required type='number' value='{{employee.compensation}}'>
+  </mat-form-field>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button>Save</button>
+  <button mat-button>Cancel</button>
+</mat-dialog-actions>

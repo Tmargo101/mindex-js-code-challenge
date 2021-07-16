@@ -17,13 +17,16 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import { DirectReportsListComponent } from './direct-reports-list/direct-reports-list.component';
+import { ModifyDialogComponent } from './modify-dialog/modify-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     EmployeeListComponent,
-    DirectReportsListComponent
+    DirectReportsListComponent,
+    ModifyDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +46,8 @@ import { DirectReportsListComponent } from './direct-reports-list/direct-reports
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule
   ],
   providers: [EmployeeService],
   bootstrap: [AppComponent]

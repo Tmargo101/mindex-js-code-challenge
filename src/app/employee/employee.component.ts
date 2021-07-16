@@ -42,7 +42,6 @@ export class EmployeeComponent implements OnInit {
   private getDirectReportInformation(employee: Employee): void {
     // Return if the passed employee has no direct reports
     if (!employee.directReports) { return; }
-    
     // Get each employee in the directReports array & add them to new directReports array
     employee.directReports.forEach(e => {
       this.employeeService.get(e)
@@ -67,6 +66,5 @@ export class EmployeeComponent implements OnInit {
           this.getReports(report);
         });
     });
-    
   }
 }
