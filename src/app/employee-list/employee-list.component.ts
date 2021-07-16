@@ -23,15 +23,21 @@ export class EmployeeListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeService.getAll()
-      .pipe(
-        reduce((emps, e: Employee) => emps.concat(e), []),
-        map(emps => this.employees = emps),
-        catchError(this.handleError.bind(this))
-      ).subscribe();
+    this.getAllEmployees();
   }
 
-  openDialog(emp: Employee, op: Operations) {
+  // Get all employees and update component array variable
+  getAllEmployees(): void {
+    this.employeeService.getAll()
+    .pipe(
+      reduce((emps, e: Employee) => emps.concat(e), []),
+      map(emps => this.employees = emps),
+      catchError(this.handleError.bind(this))
+    ).subscribe();
+  }
+
+  openDialog(emp: Employee, op: Operations): void {
+    // Open dialog and pass object
     const dialogRef = this.dialog.open(ModifyDialogComponent, {
       data: {
         employee: emp,
@@ -40,7 +46,32 @@ export class EmployeeListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      switch(result.op) {
+        case Operations.Edit:
+          console.log(`Edit ${result.emp.firstName}'s compensation: ${result.emp.compensation}`);
+          this.updateCompensation(result.emp);
+          break;
+        case Operations.Delete:
+          console.log(`Delete ${result.emp.firstName}`);
+          this.removeEmployee(emp);
+          break;
+        default:
+          break;
+      }      
+    });
+  }
+
+  updateCompensation(emp: Employee): void {
+    this.employeeService.save(emp)
+    .subscribe(() => {
+      this.getAllEmployees()
+    });
+  }
+
+  removeEmployee(emp: Employee): void {
+    this.employeeService.remove(emp)
+    .subscribe(() => {
+      this.getAllEmployees();
     });
   }
 

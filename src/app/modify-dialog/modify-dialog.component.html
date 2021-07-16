@@ -1,6 +1,6 @@
 <!-- <ng-container *ngIf='operation === Operations.Edit'> -->
 <ng-container>
-  <h2 mat-dialog-title>{{operation === Operations.Edit ? 'Edit' : 'Delete'}} Direct Report</h2>
+  <h2 mat-dialog-title>{{operation === Operations.Edit ? 'Update Compensation' : 'Delete Direct Report'}}</h2>
   <mat-dialog-content *ngIf='operation === Operations.Edit'>
     <mat-form-field>
       <mat-label>First Name</mat-label>
@@ -25,7 +25,7 @@
   
     <mat-form-field>
       <mat-label>Compensation</mat-label>
-      <input matInput required type='number' value='{{employee.compensation}}'>
+      <input matInput required type='number' [value]='employee.compensation' (keyup)="updateCompensation($event)">
     </mat-form-field>
   
   </mat-dialog-content>
@@ -36,7 +36,7 @@
   </mat-dialog-content>
 
   <mat-dialog-actions>
-    <button mat-raised-button>{{operation === Operations.Edit ? 'Save' : 'Ok'}}</button>
-    <button mat-raised-button>Cancel</button>
-  </mat-dialog-actions>  
+    <button mat-raised-button mat-dialog-close (click)='confirmOperation()'>{{operation === Operations.Edit ? 'Save' : 'Ok'}}</button>
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
 </ng-container>
