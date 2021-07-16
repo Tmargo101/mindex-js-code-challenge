@@ -1,33 +1,42 @@
-<h2 mat-dialog-title>Edit Direct Report</h2>
-<mat-dialog-content>
-  <mat-form-field>
-    <mat-label>First Name</mat-label>
-    <input matInput disabled value='{{employee.firstName}}'>
-  </mat-form-field>
+<!-- <ng-container *ngIf='operation === Operations.Edit'> -->
+<ng-container>
+  <h2 mat-dialog-title>{{operation === Operations.Edit ? 'Edit' : 'Delete'}} Direct Report</h2>
+  <mat-dialog-content *ngIf='operation === Operations.Edit'>
+    <mat-form-field>
+      <mat-label>First Name</mat-label>
+      <input matInput disabled value='{{employee.firstName}}'>
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <mat-label>Last Name</mat-label>
+      <input matInput disabled value='{{employee.lastName}}'>
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <mat-label>Title</mat-label>
+      <input matInput disabled value='{{employee.position}}'>
+    </mat-form-field>
+  
+    <br>
+  
+    <mat-form-field>
+      <mat-label>Compensation</mat-label>
+      <input matInput required type='number' value='{{employee.compensation}}'>
+    </mat-form-field>
+  
+  </mat-dialog-content>
 
-  <br>
+  <mat-dialog-content *ngIf='operation === Operations.Delete'>
+    <p>Permantly delete report {{employee.firstName}} {{employee.lastName}}?</p>
+    <p>This action cannot be undone.</p>
+  </mat-dialog-content>
 
-  <mat-form-field>
-    <mat-label>Last Name</mat-label>
-    <input matInput disabled value='{{employee.lastName}}'>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field>
-    <mat-label>Title</mat-label>
-    <input matInput disabled value='{{employee.position}}'>
-  </mat-form-field>
-
-  <br>
-
-  <mat-form-field>
-    <mat-label>Compensation</mat-label>
-    <input matInput required type='number' value='{{employee.compensation}}'>
-  </mat-form-field>
-
-</mat-dialog-content>
-<mat-dialog-actions>
-  <button mat-button>Save</button>
-  <button mat-button>Cancel</button>
-</mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-raised-button>{{operation === Operations.Edit ? 'Save' : 'Ok'}}</button>
+    <button mat-raised-button>Cancel</button>
+  </mat-dialog-actions>  
+</ng-container>

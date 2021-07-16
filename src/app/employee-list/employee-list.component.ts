@@ -2,6 +2,8 @@ import {Component, OnInit, Inject} from '@angular/core';
 import {catchError, map, reduce} from 'rxjs/operators';
 import { MatDialog } from '@angular/material/dialog';
 
+import {Operations} from '../operations';
+
 import {Employee} from '../employee';
 import {EmployeeService} from '../employee.service';
 import {ModifyDialogComponent} from '../modify-dialog/modify-dialog.component';
@@ -29,10 +31,11 @@ export class EmployeeListComponent implements OnInit {
       ).subscribe();
   }
 
-  openDialog(emp: Employee) {
+  openDialog(emp: Employee, op: Operations) {
     const dialogRef = this.dialog.open(ModifyDialogComponent, {
       data: {
-        employee: emp
+        employee: emp,
+        operation: op
       }
     });
 
@@ -45,13 +48,13 @@ export class EmployeeListComponent implements OnInit {
   editReport(emp: Employee): void {
     console.log(`Edit employee ${emp.id}`);
     this.reportToModify = emp;
-    this.openDialog(emp);
+    this.openDialog(emp, Operations.Edit);
   }
 
   deleteReport(emp: Employee): void {
     console.log(`Delete employee ${emp.id}`);
     this.reportToModify = emp;
-    this.openDialog(emp);
+    this.openDialog(emp, Operations.Delete);
   }
 
   private handleError(e: Error | any): string {
