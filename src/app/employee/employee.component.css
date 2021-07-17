@@ -10,4 +10,9 @@ mat-card-title {
 
 mat-card-subtitle {
   padding: 5px;
+  padding-left: 20px;
+}
+
+.emp-compensation {
+  margin-left: 35px;
 }
