@@ -46,7 +46,7 @@ export class EmployeeListComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      switch(result.op) {
+      switch (result.op) {
         case Operations.Edit:
           console.log(`Edit ${result.emp.firstName}'s compensation: ${result.emp.compensation}`);
           this.updateCompensation(result.emp);
@@ -57,14 +57,14 @@ export class EmployeeListComponent implements OnInit {
           break;
         default:
           break;
-      }      
+      }
     });
   }
 
   updateCompensation(emp: Employee): void {
     this.employeeService.save(emp)
     .subscribe(() => {
-      this.getAllEmployees()
+      this.getAllEmployees();
     });
   }
 

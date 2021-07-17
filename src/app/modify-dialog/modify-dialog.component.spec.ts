@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 import { ModifyDialogComponent } from './modify-dialog.component';
 
@@ -12,6 +12,7 @@ describe('ModifyDialogComponent', () => {
       declarations: [ ModifyDialogComponent ],
       providers: [
         { provide: MAT_DIALOG_DATA, useValue: {} },
+        { provide: MatDialogRef, useValue: {} }
       ]
     })
     .compileComponents();

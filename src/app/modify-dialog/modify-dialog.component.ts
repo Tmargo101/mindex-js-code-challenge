@@ -11,18 +11,16 @@ import { Operations } from '../operations';
   styleUrls: ['./modify-dialog.component.css']
 })
 
-export class ModifyDialogComponent {  
+export class ModifyDialogComponent {
   employee: Employee;
   operation: Operations;
-  compensationField = new FormControl('');
 
   // Alias for Operations enum
   Operations = Operations;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public dialogRef: MatDialogRef<ModifyDialogComponent>) {
     this.employee = data.employee;
-    this.operation = data.operation
-    this.compensationField.setValue(this.employee.compensation);
+    this.operation = data.operation;
   }
 
   // Close dialog and pass back updated employee object & operation enum

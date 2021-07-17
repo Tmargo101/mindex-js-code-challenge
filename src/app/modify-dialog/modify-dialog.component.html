@@ -25,7 +25,7 @@
   
     <mat-form-field>
       <mat-label>Compensation</mat-label>
-      <input matInput required type='number' [value]='employee.compensation' (keyup)="updateCompensation($event)">
+      <input matInput required type='number' [value]='this.employee.compensation' (keyup)="updateCompensation($event)">
     </mat-form-field>
   
   </mat-dialog-content>
