@@ -37,7 +37,6 @@ export class EmployeeListComponent implements OnInit {
 
   openDialog(modOp: ModifyOperation): void {
     // Open dialog and pass the ModifyOperation object
-    console.log(modOp);
     const dialogRef = this.dialog.open(ModifyDialogComponent, {
       data: {
         modOp: modOp
@@ -51,7 +50,7 @@ export class EmployeeListComponent implements OnInit {
           this.updateCompensation(result.emp);
           break;
         case Operations.Delete:
-          this.removeEmployee(result.emp);
+          this.removeEmployee(result.emp, modOp.man);
           break;
         default:
           break;
@@ -71,13 +70,26 @@ export class EmployeeListComponent implements OnInit {
   }
 
   // DELETE the Employee object from API & refresh the employee list to reflect the changes
-  removeEmployee(emp: Employee): void {
+  removeEmployee(emp: Employee, man: Employee): void {
+
+    // Remove the employee object
     this.employeeService.remove(emp)
     .pipe(
       catchError(this.handleError.bind(this))
     )
     .subscribe(() => {
-      this.getAllEmployees();
+      // Remove the employee ID from the manager's directReports array
+      man.directReports = man.directReports.filter(empToRemove => empToRemove !== emp.id);
+
+      // Update the manager's directReports array
+      this.employeeService.save(man)
+      .pipe(
+        catchError(this.handleError.bind(this))
+      ).subscribe(()=> {
+        // Refresh the employee list
+        this.getAllEmployees();
+      });
+      
     });
   }
 

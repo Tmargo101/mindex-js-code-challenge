@@ -26,7 +26,7 @@ export class ModifyDialogComponent {
   confirmOperation(): void {
     this.dialogRef.close({
       emp: this.employee,
-      op: this.operation
+      op: this.operation,
     });
   }
 }

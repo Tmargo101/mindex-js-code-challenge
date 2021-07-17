@@ -11,7 +11,7 @@
     <app-direct-reports-list
       *ngIf='employee.directReports'
       [(directReports)]='directReports'
-      (modifyReport)='emitModifyReport($event)'
+      (modifyReport)='emitModifyReport($event, this.employee)'
     ></app-direct-reports-list>
   </mat-card-content>
 </mat-card>

@@ -31,7 +31,8 @@ export class EmployeeComponent implements OnInit {
   }
 
   // Pass employee to modify from the direct-reports-list component to the employee-list component
-  emitModifyReport(modOp: ModifyOperation): void {
+  emitModifyReport(modOp: ModifyOperation, man: Employee): void {
+    modOp.man = man;
     this.modifyReport.emit(modOp);
   }
 

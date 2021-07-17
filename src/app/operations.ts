@@ -8,4 +8,5 @@ export enum Operations {
 export class ModifyOperation {
   emp: Employee;
   op: Operations;
+  man?: Employee;
 }
