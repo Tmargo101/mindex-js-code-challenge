@@ -1,38 +1,38 @@
-<!-- <ng-container *ngIf='operation === Operations.Edit'> -->
 <ng-container>
   <h2 mat-dialog-title>{{operation === Operations.Edit ? 'Update Compensation' : 'Delete Direct Report'}}</h2>
+  <!-- Edit Dialog Content -->
   <mat-dialog-content *ngIf='operation === Operations.Edit'>
     <mat-form-field>
       <mat-label>First Name</mat-label>
-      <input matInput disabled value='{{employee.firstName}}'>
+      <input matInput disabled [(ngModel)]='this.employee.firstName'>
     </mat-form-field>
-  
+
     <br>
   
     <mat-form-field>
       <mat-label>Last Name</mat-label>
-      <input matInput disabled value='{{employee.lastName}}'>
+      <input matInput disabled [(ngModel)]='this.employee.lastName'>
     </mat-form-field>
   
     <br>
   
     <mat-form-field>
       <mat-label>Title</mat-label>
-      <input matInput disabled value='{{employee.position}}'>
+      <input matInput disabled [(ngModel)]='this.employee.position'>
     </mat-form-field>
   
     <br>
   
     <mat-form-field>
       <mat-label>Compensation</mat-label>
-      <input matInput required type='number' [value]='this.employee.compensation' (keyup)="updateCompensation($event)">
+      <input matInput requred type='number' [(ngModel)]='this.employee.compensation'>
     </mat-form-field>
   
   </mat-dialog-content>
-
+<!-- Delete Dialog Content -->
   <mat-dialog-content *ngIf='operation === Operations.Delete'>
-    <p>Permantly delete report {{employee.firstName}} {{employee.lastName}}?</p>
-    <p>This action cannot be undone.</p>
+    <p class='mat-body'>Permantly delete report {{employee.firstName}} {{employee.lastName}}?</p>
+    <p class='mat-body'>This action cannot be undone.</p>
   </mat-dialog-content>
 
   <mat-dialog-actions>

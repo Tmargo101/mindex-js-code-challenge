@@ -1,4 +1,5 @@
 import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
+import {catchError} from 'rxjs/operators';
 
 import {Employee} from '../employee';
 import {EmployeeService} from '../employee.service';
@@ -16,6 +17,7 @@ export class EmployeeComponent implements OnInit {
 
   totalReports: number;
   directReports: Employee[];
+  errorMessage: string;
 
   constructor(private employeeService: EmployeeService) {
     this.totalReports = 0;
@@ -40,6 +42,9 @@ export class EmployeeComponent implements OnInit {
     // Get each employee in the directReports array & add them to new directReports array
     employee.directReports.forEach(e => {
       this.employeeService.get(e)
+        .pipe(
+          catchError(this.handleError.bind(this))
+        )
         .subscribe(report => {
           this.directReports.push(report);
         });
@@ -57,9 +62,18 @@ export class EmployeeComponent implements OnInit {
     // Recursivly check for indirect reports
     employee.directReports.forEach(e => {
       this.employeeService.get(e)
+        .pipe(
+          catchError(this.handleError.bind(this))
+        ) 
         .subscribe(report => {
           this.getReports(report);
         });
     });
   }
+
+  private handleError(e: Error | any): string {
+    console.error(e);
+    return this.errorMessage = e.message || 'Unable to retrieve data';
+  }
+
 }

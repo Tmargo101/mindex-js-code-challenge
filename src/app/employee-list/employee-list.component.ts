@@ -1,6 +1,6 @@
-import {Component, OnInit, Inject} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {catchError, map, reduce} from 'rxjs/operators';
-import { MatDialog } from '@angular/material/dialog';
+import {MatDialog} from '@angular/material/dialog';
 
 import {ModifyOperation, Operations} from '../operations';
 
@@ -62,6 +62,9 @@ export class EmployeeListComponent implements OnInit {
   // POST updated Employee object to API & refresh the employee list to reflect the changes
   updateCompensation(emp: Employee): void {
     this.employeeService.save(emp)
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
     .subscribe(() => {
       this.getAllEmployees();
     });
@@ -70,6 +73,9 @@ export class EmployeeListComponent implements OnInit {
   // DELETE the Employee object from API & refresh the employee list to reflect the changes
   removeEmployee(emp: Employee): void {
     this.employeeService.remove(emp)
+    .pipe(
+      catchError(this.handleError.bind(this))
+    )
     .subscribe(() => {
       this.getAllEmployees();
     });
@@ -77,6 +83,6 @@ export class EmployeeListComponent implements OnInit {
 
   private handleError(e: Error | any): string {
     console.error(e);
-    return this.errorMessage = e.message || 'Unable to retrieve employees';
+    return this.errorMessage = e.message || 'Unable to retrieve data';
   }
 }

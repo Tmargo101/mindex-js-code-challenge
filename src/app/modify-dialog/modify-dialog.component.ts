@@ -29,10 +29,4 @@ export class ModifyDialogComponent {
       op: this.operation
     });
   }
-
-  // Update employee object when the input field changes
-  updateCompensation(event: any): void {
-    this.employee.compensation = event.target.value;
-  }
-
 }
