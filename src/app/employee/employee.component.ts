@@ -2,6 +2,7 @@ import {Component, Input, Output, EventEmitter, OnInit} from '@angular/core';
 
 import {Employee} from '../employee';
 import {EmployeeService} from '../employee.service';
+import { ModifyOperation, Operations } from '../operations';
 
 
 @Component({
@@ -11,8 +12,7 @@ import {EmployeeService} from '../employee.service';
 })
 export class EmployeeComponent implements OnInit {
   @Input() employee: Employee;
-  @Output() editReport = new EventEmitter<Employee>();
-  @Output() deleteReport = new EventEmitter<Employee>();
+  @Output() modifyReport = new EventEmitter<ModifyOperation>();
 
   totalReports: number;
   directReports: Employee[];
@@ -28,14 +28,9 @@ export class EmployeeComponent implements OnInit {
     this.getDirectReportInformation(this.employee);
   }
 
-  // Pass employee to edit from the direct-reports-list component to the employee-list component
-  emitEditReport(emp: Employee): void {
-    this.editReport.emit(emp);
-  }
-
-  // Pass employee to delete from the direct-reports-list component to the employee-list component
-  emitDeleteReport(emp: Employee): void {
-    this.deleteReport.emit(emp);
+  // Pass employee to modify from the direct-reports-list component to the employee-list component
+  emitModifyReport(modOp: ModifyOperation): void {
+    this.modifyReport.emit(modOp);
   }
 
   // Get all direct reports

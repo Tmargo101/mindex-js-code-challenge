@@ -1,6 +1,5 @@
 import { Component, Inject } from '@angular/core';
 import {MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
-import { FormControl } from '@angular/forms';
 
 import { Employee } from '../employee';
 import { Operations } from '../operations';
@@ -19,8 +18,8 @@ export class ModifyDialogComponent {
   Operations = Operations;
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public dialogRef: MatDialogRef<ModifyDialogComponent>) {
-    this.employee = data.employee;
-    this.operation = data.operation;
+    this.employee = data.modOp.emp;
+    this.operation = data.modOp.op;
   }
 
   // Close dialog and pass back updated employee object & operation enum
