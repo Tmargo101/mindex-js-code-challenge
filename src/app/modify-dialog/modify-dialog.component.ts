@@ -16,6 +16,7 @@ export class ModifyDialogComponent {
 
   // Alias for Operations enum
   Operations = Operations;
+  modOp: {};
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public dialogRef: MatDialogRef<ModifyDialogComponent>) {
     this.employee = data.modOp.emp;

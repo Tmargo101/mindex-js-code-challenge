@@ -13,5 +13,6 @@
       [(directReports)]='directReports'
       (modifyReport)='emitModifyReport($event, this.employee)'
     ></app-direct-reports-list>
+    <p *ngIf='!employee.directReports' class='mat-subheading-1'>This employee has no reports.</p>
   </mat-card-content>
 </mat-card>

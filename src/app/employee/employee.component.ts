@@ -65,7 +65,7 @@ export class EmployeeComponent implements OnInit {
       this.employeeService.get(e)
         .pipe(
           catchError(this.handleError.bind(this))
-        ) 
+        )
         .subscribe(report => {
           this.getReports(report);
         });

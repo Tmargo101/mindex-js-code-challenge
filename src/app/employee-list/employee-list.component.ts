@@ -28,7 +28,7 @@ export class EmployeeListComponent implements OnInit {
   // Get all employees and update component array variable
   getAllEmployees(): void {
     this.employeeService.getAll()
-    .pipe(  
+    .pipe(
       reduce((emps, e: Employee) => emps.concat(e), []),
       map(emps => this.employees = emps),
       catchError(this.handleError.bind(this))
@@ -85,11 +85,11 @@ export class EmployeeListComponent implements OnInit {
       this.employeeService.save(man)
       .pipe(
         catchError(this.handleError.bind(this))
-      ).subscribe(()=> {
+      )
+      .subscribe(() => {
         // Refresh the employee list
         this.getAllEmployees();
       });
-      
     });
   }
 
